@@ -1,0 +1,45 @@
+<div class="form-top-div clearfix">
+	<div class="form-top-left pull-left">
+		<div ng-if="!taskInfo.forbid">
+			<h3>项目类型：{{taskInfo.processName}}&nbsp;&nbsp;&nbsp;当前节点：{{taskInfo.taskKey}}&nbsp;&nbsp;&nbsp;流程状态：</h3> 
+			<span class="label" ng-if="!taskInfo.isClaimed">未签收</span>
+			<span class="label label-success" ng-if="taskInfo.isClaimed">已签收</span>
+		</div>
+		<div ng-if="taskInfo.forbid">
+			<h3>项目类型：{{taskInfo.processName}}</div>
+	</div>
+	<div class="form-top-right pull-right" ng-init="operatList = true" ng-init="print = true">
+		<div class="dropdown">
+			<i class="icon icon-list-ul more" data-toggle="dropdown" title="菜单"></i>
+			<ul class="dropdown-menu pull-right">
+				<li class="dropdown" ng-if="!taskInfo.forbid && !taskInfo.isClaimed" ng-click="claimOrUnclaim('claim');">
+					<a href="javascript:;">签收</a>
+				</li>
+				<li class="dropdown" ng-if="!taskInfo.forbid && taskInfo.isClaimed" ng-click="claimOrUnclaim('Unclaim')">
+					<a href="javascript:;">放弃</a>
+				</li>
+				<li class="divider"></li>
+				<li class="dropdown" ng-click="showLzDialog()">
+					<a href="javascript:;">流程详情</a>
+				</li>
+				<li class="divider"></li>
+				<li class="dropdown" ng-click="showWfGraph()">
+					<a href="javascript:;">流程图</a>
+				</li>
+				<li class="divider"></li>
+				<li class="dropdown-submenu">
+					<a href="javascript:;">打印</a>
+					<ul class="dropdown-menu pull-left">
+						<li ng-repeat="item in settings.prints">
+							<a href="javascript:;" ng-click="print(item.code)">{{item.name}}</a>
+						</li>
+					</ul>
+				</li>
+				<li class="divider"></li>
+				<li class="dropdown" ng-click="viewMap()">
+					<a href="javascript:;">定位</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

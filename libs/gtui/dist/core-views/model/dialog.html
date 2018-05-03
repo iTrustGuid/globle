@@ -1,0 +1,14 @@
+<header class="dialog-header">
+	<h4 class="modal-title">{{dialogParameter.title}}</h4>
+</header>
+<div class="dialog-content">
+	<div class="dialog-query-content">
+		<form class="form-simple form-horizontal">
+			<div ng-include="dialogParameter.url"></div>
+		</form>
+	</div>
+</div>
+<div class="dialog-buttons">
+	<button ng-repeat="button in dialogParameter.buttons" class="btn btn-default" ng-click="dialogButtonClick(button.click)">{{button.name}}</button>
+	<button type="button" class="btn btn-default" ng-click="closeDialog()">关闭</button>
+</div>

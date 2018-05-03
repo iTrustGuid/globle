@@ -1,0 +1,14 @@
+<!--多表单拼接模板-->
+
+<div class="tab-content">
+    <div ng-repeat="item in tabs" id="div{{$index}}" style="height: 100%">
+        <div ng-include="'../../forms/' + item.url" data-url="../../forms/{{item.url}}" class="test-directive"></div>
+    </div>
+</div>
+
+<div class="gm-form-toolbar maxWidth" ng-if="qszt==1">
+    <button style="margin: 10px;margin-top:0;" ng-repeat="button in buttons" class="btn btn-primary"
+            ng-click="invokePlugin(button.plugin,button.successMsg,button.failureMsg)" page-valid>
+        {{button.name}}
+    </button>
+</div>

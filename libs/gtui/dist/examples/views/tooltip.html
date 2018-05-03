@@ -1,0 +1,159 @@
+<div ng-controller="tooltipCtrl">
+    <h2>{{pItem.caption}}</h2>
+	<aside>示例只展示简单用法，详细内容请查看官方文档：
+		<a href="http://mgcrea.github.io/angular-strap/#/getting-started" target="_blank">AngularStrap</a>
+	</aside>
+	<div id="tooltipTip">
+		<h3>工具提示信息</h3>
+    	<div class="description">
+			<h4>插件demo如下：</h4>
+			<div>
+				<p>Tight pants next level keffiyeh <a href data-animation="am-flip-x" bs-tooltip="tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown.</p>
+				<div class="input-group col-xs-5">
+				  <span class="input-group-btn">
+					<!-- You can also use data-attrs to assign scope variables -->
+					<button class="btn btn-primary" type="button" data-trigger="click" data-type="success" data-title="{{tooltip.title}}" bs-tooltip>Click me</button>
+				  </span>
+				  <input type="text" class="form-control" data-placement="right" data-type="info" data-container="body" placeholder="Focus to toggle tooltip" data-trigger="focus" bs-tooltip="tooltip">
+				</div>
+				<div class="checkbox">
+				  <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale" bs-tooltip="tooltip" bs-enabled="tooltip.checked">
+					<input type="checkbox" ng-model="tooltip.checked"> Check me to enable my tooltip
+				  </label>
+				</div>
+			</div>
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>JS代码</strong>
+				<code class="js">
+					$scope.tooltip = {
+						"title": "Hello Tooltip<br />This is a multiline message!",
+						"checked": true
+					};
+				</code>
+				<strong>Html代码</strong>
+				<code class="html">
+					&lt;div&gt;
+						&lt;p&gt;Tight pants next level keffiyeh &lt;a href data-animation=&quot;am-flip-x&quot; bs-tooltip=&quot;tooltip&quot;&gt;you probably&lt;/a&gt; haven&#x27;t heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown.&lt;/p&gt;
+						&lt;div class=&quot;input-group col-xs-5&quot;&gt;
+						  &lt;span class=&quot;input-group-btn&quot;&gt;
+							&lt;!-- You can also use data-attrs to assign scope variables --&gt;
+							&lt;button class=&quot;btn btn-primary&quot; type=&quot;button&quot; data-trigger=&quot;click&quot; data-type=&quot;success&quot; data-title=&quot;{{tooltip.title}}&quot; bs-tooltip&gt;Click me&lt;/button&gt;
+						  &lt;/span&gt;
+						  &lt;input type=&quot;text&quot; class=&quot;form-control&quot; data-placement=&quot;right&quot; data-type=&quot;info&quot; data-container=&quot;body&quot; placeholder=&quot;Focus to toggle tooltip&quot; data-trigger=&quot;focus&quot; bs-tooltip=&quot;tooltip&quot;&gt;
+						&lt;/div&gt;
+						&lt;div class=&quot;checkbox&quot;&gt;
+						  &lt;label data-placement=&quot;bottom-left&quot; data-type=&quot;info&quot; data-animation=&quot;am-fade-and-scale&quot; bs-tooltip=&quot;tooltip&quot; bs-enabled=&quot;tooltip.checked&quot;&gt;
+							&lt;input type=&quot;checkbox&quot; ng-model=&quot;tooltip.checked&quot;&gt; Check me to enable my tooltip
+						  &lt;/label&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				</code>
+			</pre>
+		</div>
+    </div>
+	<div id="tooltipPopover">
+		<h3>箭头弹框插件</h3>
+    	<div class="description">
+			<h4>插件demo如下：</h4>
+			<div>
+				<button type="button" class="btn btn-lg btn-primary" data-placement="bottom" data-animation="am-flip-x" bs-popover="popover">Click to toggle popover
+				  <br>
+				  <small>(using an object)</small>
+				</button>
+
+				<!-- You can also use data-attrs to assign scope variables -->
+				<button type="button" class="btn btn-lg btn-primary" data-placement="top-right" title="{{popover.title}}" data-content="{{popover.content}}" data-trigger="focus" bs-popover>Click to toggle popover
+				  <br>
+				  <small>(using data-attrs)</small>
+				</button>
+
+				<!-- You can use a custom html template with the `data-template` attr -->
+
+				<!-- A popover can also be triggered programmatically using the $popover service -->
+				<button type="button" id="popover-as-service" class="btn btn-lg btn-primary" title="{{popover.title}}" ng-click="togglePopover()">Click to toggle popover
+				  <br>
+				  <small>(using $popover service)</small>
+				</button>
+			</div>
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>JS代码</strong>
+				<code class="js">
+					 $scope.popover = {
+						"title": "Title",
+						"content": "Hello Popover<br />This is a multiline message!"
+					 };
+				</code>
+				<strong>Html代码</strong>
+				<code class="html">
+					&lt;div&gt;
+						&lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-primary&quot; data-placement=&quot;bottom&quot; data-animation=&quot;am-flip-x&quot; bs-popover=&quot;popover&quot;&gt;Click to toggle popover
+						  &lt;br&gt;
+						  &lt;small&gt;(using an object)&lt;/small&gt;
+						&lt;/button&gt;
+
+						&lt;!-- You can also use data-attrs to assign scope variables --&gt;
+						&lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-primary&quot; data-placement=&quot;top-right&quot; title=&quot;{{popover.title}}&quot; data-content=&quot;{{popover.content}}&quot; data-trigger=&quot;focus&quot; bs-popover&gt;Click to toggle popover
+						  &lt;br&gt;
+						  &lt;small&gt;(using data-attrs)&lt;/small&gt;
+						&lt;/button&gt;
+
+						&lt;!-- You can use a custom html template with the &#x60;data-template&#x60; attr --&gt;
+						&lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-danger&quot; title=&quot;{{popover.title}}&quot; data-content=&quot;{{popover.content}}&quot; data-template-url=&quot;popover/docs/popover.demo.tpl.html&quot; data-animation=&quot;am-flip-x&quot; data-auto-close=&quot;1&quot; bs-popover&gt;Custom Popover
+						  &lt;br&gt;
+						  &lt;small&gt;(using data-template)&lt;/small&gt;
+						&lt;/button&gt;
+
+						&lt;!-- A popover can also be triggered programmatically using the $popover service --&gt;
+						&lt;button type=&quot;button&quot; id=&quot;popover-as-service&quot; class=&quot;btn btn-lg btn-primary&quot; title=&quot;{{popover.title}}&quot; ng-click=&quot;togglePopover()&quot;&gt;Click to toggle popover
+						  &lt;br&gt;
+						  &lt;small&gt;(using $popover service)&lt;/small&gt;
+						&lt;/button&gt;
+					&lt;/div&gt;
+				</code>
+			</pre>
+		</div>
+	</div>
+	<div id="tooltipAlert">
+		<h3>alert弹框</h3>
+		<div class="description">
+			<h4>插件demo如下：</h4>
+			<div>
+				<button class="btn btn-lg btn-primary" ng-click="showAlert()">弹出alert框</button>
+			</div>
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>JS代码</strong>
+				<code class="js">
+					$scope.showAlert = function(){
+						GM.Alert.show("提示","是否确认删除？",{
+							showCancelButton:true,
+							type:"warning"
+						},function(){
+							console.log("已经删除！");
+						});
+					};
+				</code>
+			</pre>
+		</div>
+	</div>
+	<div id="tooltipInfomation">
+		<h3>提示性弹框</h3>
+		<div class="description">
+			<h4>插件demo如下：</h4>
+			<div>
+				<button class="btn btn-lg btn-primary" ng-click="showInfo()">弹出提示框</button>
+			</div>
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>JS代码</strong>
+				<code class="js">
+					$scope.showInfo = function(){
+						GM.Infomation.show("我是消息框！");
+					};
+				</code>
+			</pre>
+		</div>
+	</div>
+</div>

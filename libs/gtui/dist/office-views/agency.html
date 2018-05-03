@@ -1,0 +1,65 @@
+<div ng-controller="agencyCtrl" style="height: 98%;">
+	<div class="query-form">
+		<header>
+			<h4>待办箱</h4>
+		</header>
+		<div class="query-content">
+	        <div class="query-condition">
+	            <div class="query-input">
+					<div class="query-item">
+						<label>案卷编号</label>
+						<div>
+							<input type='text' class="form-control" ng-model="agencyForm.bizKey"/>
+						</div>
+					</div>
+					<div class="query-item">
+						<label>案卷名称</label>
+						<div>
+							<input type='text' class="form-control" ng-model="agencyForm.bizName"/>
+						</div>
+					</div>
+					<div class="query-item" ng-show="bShowMoreCondition">
+						<label>业务类型</label>
+						<div>
+							<select class="form-control" ng-model="agencyForm.processName">
+								<option ng-repeat="p in processes">{{p.processName}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="query-item" ng-show="bShowMoreCondition">
+		            	<label>接收时间</label>
+		            	<div class="two-condition">
+		            		<div>  
+			                    <input type='text' class="form-control date-choose"  ng-model="agencyForm.startTime1" readonly="readonly"/>  
+		                    </div>
+		                    <label>至</label>
+		                    <div>  
+			                    <input type='text' class="form-control date-choose"  ng-model="agencyForm.startTime2" readonly="readonly"/>   
+		                    </div>
+		            	</div>
+	            	</div>
+	           	</div>
+            	<div class="query-tool">
+            		<button class="btn btn-primary" type="button"  ng-click="refer()">查询</button>
+					<button class="btn btn-primary" type="button" ng-click="delet()">清除</button>
+				</div>
+				<div class="query-extra">
+					<button class="btn btn-link" type="button" ng-click="bShowMoreCondition=!bShowMoreCondition">
+						<i class="icon" ng-class="{'icon-double-angle-down':!bShowMoreCondition,'icon-double-angle-up':bShowMoreCondition}"></i>更多条件查询
+					</button>
+				</div>
+           	</div>
+           	<div class="tool-bar">
+				<div class="tool-buttons">
+					<button class="btn btn-link" type="button"><i class="icon icon-upload"></i>全部导出</button>
+					<button class="btn btn-link" type="button"><i class="icon icon-download-alt"></i>帮助</button>
+				</div>
+			</div>
+			<div class="content-table">
+				<gm-table tabledata="userData" checkable="false"></gm-table>
+			</div>
+			<gm-pagination pagedata = "pendingPage"></gm-pagination>
+		</div>
+		<button id="agency_button" class="hidden" ng-click="goPending()"></button>
+	</div>
+</div>

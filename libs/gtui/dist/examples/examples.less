@@ -1,0 +1,79 @@
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+  background: white;
+  &>header{
+    text-align: center;
+    background: #fb0f;
+    color: white;
+    display: none;
+    &.show-header{
+      display: block !important;
+    }
+  }
+  &>.content{
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    .content-left{
+      width: 250px;
+      padding: 0 1px;
+      overflow: auto;
+      border-right: solid 1px #fb0f65;
+    }
+    .content-right{
+      flex: 1;
+      width: 200px;
+      overflow: auto;
+      padding: 10px;
+      overflow-x: hidden;
+      &>div{
+        margin-bottom: 50px;
+        h4{
+          margin-bottom: 15px;
+          color: #fb0f65;
+        }
+      }
+      [id]{
+        padding: 5px 0 0 0;
+      }
+    }
+    code{
+      font-size: 16px;
+    }
+    .description{
+      padding: 5px 0 10px 20px;
+    }
+  }
+  &>footer{
+
+  }
+}
+
+.nav-not-parent{
+  .nav-parent-fold-icon{
+    display: none !important;
+  }
+}
+
+.carousel-demo{
+  background: black;
+  text-align: center;
+  position: relative;
+  .carousel1{
+    height: 480px;
+    li>div{
+      height:100%;
+    }
+  }
+}
+
+#signature{
+  height: 500px;
+  border: 2px dotted black;
+  background-color: lightgrey;
+}

@@ -1,0 +1,84 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: white;
+}
+body > header {
+  text-align: center;
+  background: rgb(255, 187, 0);
+  color: white;
+  display: none;
+}
+body > header.show-header {
+  display: block !important;
+}
+body > .content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+body > .content .content-left {
+  width: 250px;
+  padding: 0 1px;
+  overflow: auto;
+  border-right: solid 1px #fb0f65;
+}
+body > .content .content-right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 200px;
+  overflow: auto;
+  padding: 10px;
+  overflow-x: hidden;
+}
+body > .content .content-right > div {
+  margin-bottom: 50px;
+}
+body > .content .content-right > div h4 {
+  margin-bottom: 15px;
+  color: #fb0f65;
+}
+body > .content .content-right [id] {
+  padding: 5px 0 0 0;
+}
+body > .content code {
+  font-size: 16px;
+}
+body > .content .description {
+  padding: 5px 0 10px 20px;
+}
+.nav-not-parent .nav-parent-fold-icon {
+  display: none !important;
+}
+.carousel-demo {
+  background: black;
+  text-align: center;
+  position: relative;
+}
+.carousel-demo .carousel1 {
+  height: 480px;
+}
+.carousel-demo .carousel1 li > div {
+  height: 100%;
+}
+#signature {
+  height: 500px;
+  border: 2px dotted black;
+  background-color: lightgrey;
+}
+
+/*# sourceMappingURL=example-eaffd.css.map*/

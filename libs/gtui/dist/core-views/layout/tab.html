@@ -1,0 +1,20 @@
+<div ng-if="!!settings.topUrl" ng-include="settings.topUrl" class="topFlag"></div>
+<form class="form-horizontal maxHeight form-simple" name="allForms">
+	<ul class="nav nav-tabs">
+		<li ng-repeat="item in settings.forms" ng-class="{'active':item.default}">
+			<a data-tab href="#tabContent{{$index}}">{{item.name}}</a>
+		</li>
+	</ul>
+	<div class="tab-content main-tab-content div-content">
+		<div ng-repeat="item in settings.forms" class="maxHeight tab-pane" ng-class="{'active':item.default}" id="tabContent{{$index}}">
+			<div class="maxHeight tab-inner-content" ng-include="'views/forms/' + item.url" data-url="views/forms/{{item.url}}"></div>
+		</div>
+	</div>
+</form>
+
+<div class="gm-form-toolbar">
+	<button ng-if="!taskInfo.forbid && (!taskInfo.bizKey || taskInfo.isClaimed)" style="margin: 10px" ng-repeat="button in settings.buttons" class="btn btn-primary" ng-click="invokePlugin(this, button.plugin, button.successMsg,button.failureMsg)" page-valid>
+        {{button.name}}
+   	</button>
+	<button style="margin: 10px" class="btn btn-primary" ng-click="invokePlugin(this, 'goBack')">返回</button>
+</div>

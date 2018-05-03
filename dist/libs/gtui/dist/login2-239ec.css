@@ -1,0 +1,233 @@
+banner {
+  display: block;
+  width: 100%;
+  background-size: 100% 100% !important;
+}
+banner .backImg {
+  width: 100%;
+  height: 100%;
+}
+banner .title {
+  z-index: 100;
+  color: #fff;
+  width: 100%;
+  height: 40%;
+  text-align: center;
+}
+banner .title .logBox {
+  display: inline-block;
+  width: 16px;
+  width: 1rem;
+  height: 16px;
+  height: 1rem;
+}
+banner .title .logBox img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding-top: 26px;
+}
+banner .title .titleText {
+  display: inline-block;
+}
+banner .title .titleText p:nth-of-type(1) {
+  font: 6.4px/8px "\5FAE\8F6F\96C5\9ED1";
+  font: 0.4rem/0.5rem "\5FAE\8F6F\96C5\9ED1";
+  text-shadow: 0 2px 5px #000;
+  margin: 0 0 5px 0;
+}
+banner .title .titleText p:nth-of-type(2) {
+  font: 2.56px/3.2px "\5FAE\8F6F\96C5\9ED1";
+  font: 0.16rem/0.2rem "\5FAE\8F6F\96C5\9ED1";
+  opacity: .6;
+  filter: alpha(opacity=60);
+}
+banner .content > form {
+  left: 62%;
+  position: absolute;
+  top: 25%;
+}
+banner .swiperBox {
+  position: relative;
+  float: left;
+  height: 300px;
+  width: 400px;
+  left: 25%;
+  top: -15%;
+}
+banner .swiperBox .swiper-container {
+  width: 100%;
+  height: 100%;
+}
+banner .swiperBox .swiper-container .swiper-wrapper img {
+  width: 68%;
+  height: auto;
+}
+banner .swiperBox .swiper-container .swiper-wrapper .tips {
+  display: block;
+  position: absolute;
+  top: 2%;
+  right: 0;
+  font: 20px/28px "\5FAE\8F6F\96C5\9ED1";
+  font-weight: bold;
+  color: #fff;
+  transform: scale(0.6);
+  -ms-transform: scale(0.6);
+  -moz-transform: scale(0.6);
+  -webkit-transform: scale(0.6);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+banner .swiperBox .swiper-container .swiper-wrapper .showTips {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  opacity: .9;
+  filter: alpha(opacity=90);
+}
+banner .swiperBox .swiper-container .swiper-pagination {
+  bottom: 17px;
+  left: -16%;
+  position: relative;
+}
+banner .swiperBox .swiper-container .swiper-pagination .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 1;
+}
+banner .swiperBox .swiper-container .swiper-pagination .swiper-pagination-bullet-active {
+  background: #6bafd6;
+}
+banner .inputBox {
+  width: 300px;
+  background: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 5px #020218;
+          box-shadow: 0 0 5px #020218;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+banner .inputBox .inputTitle {
+  width: 95%;
+  height: 50px;
+  margin: 0 8px;
+  color: #114368;
+  font: 16px/50px "\5FAE\8F6F\96C5\9ED1";
+  text-align: center;
+  border-bottom: 1px dashed #929292;
+}
+banner .inputBox .inputList {
+  width: 100%;
+  margin-top: 8%;
+  padding: 0 8px;
+}
+banner .inputBox .inputList li {
+  width: 100%;
+  margin: 5% 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 6%;
+  position: relative;
+}
+banner .inputBox .inputList li .iconImg {
+  position: absolute;
+  top: 30%;
+  left: 8%;
+}
+banner .inputBox .inputList li .form-control::-webkit-input-placeholder {
+  color: #808080;
+}
+banner .inputBox .inputList li .form-control:-ms-input-placeholder {
+  color: #808080;
+}
+banner .inputBox .inputList li .form-control::-ms-input-placeholder {
+  color: #808080;
+}
+banner .inputBox .inputList li .form-control::placeholder {
+  color: #808080;
+}
+banner .inputBox .inputList li .form-control {
+  height: 36px;
+  width: 100%;
+  padding: 3px 8px 3px 25px;
+  font-size: 13px;
+  line-height: 20px;
+  color: #222;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+}
+banner .inputBox .inputList li .form-control:focus {
+  border-color: #145ccd;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(20, 92, 205, .6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(20, 92, 205, .6);
+}
+banner .inputBox .inputList li .herfWidth {
+  padding: 0 0 0 25px;
+  width: 90px;
+  height: 29px;
+  display: inline-block;
+}
+banner .inputBox .inputList li .codeBox {
+  position: absolute;
+  left: 40%;
+  width: 30%;
+  height: 100%;
+}
+banner .inputBox .inputList li .codeBox img {
+  width: 100%;
+  height: 100%;
+}
+banner .inputBox .inputList li .change {
+  padding-left: 39%;
+}
+banner .inputBox .btnBox {
+  width: 100%;
+  height: 60px;
+  border-radius: 0 0 4px 4px;
+  position: relative;
+  background: #efefef;
+}
+banner .inputBox .btnBox .btn-submit {
+  display: block;
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  width: 60%;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 40px;
+  background: #38bf58;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(44%, #38bf58), to(#269d43));
+  background: linear-gradient(to bottom, #38bf58 44%, #269d43 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#38bf58', endColorstr='#269d43', GradientType=0);
+  /* IE6-9 */
+}
+footer {
+  width: 100%;
+  height: 9.6px;
+  height: .6rem;
+  text-align: center;
+  line-height: 9.6px;
+  line-height: .6rem;
+  font-size: 1.92px;
+  font-size: .12rem;
+}
+
+/*# sourceMappingURL=login2-239ec.css.map*/

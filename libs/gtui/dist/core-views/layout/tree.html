@@ -1,0 +1,23 @@
+<div class="row tree-form">
+	<div class="tree-box scrollbar-hover">
+		<gm-tree treedata="settings.tabs" data-check="false" data-collapsed="false" data-icon="true" config="treeConfig"></gm-tree>
+	</div>
+	<div class="tree-form-box scrollbar-hover">
+		<div ng-if="!!settings.topUrl" ng-include="settings.topUrl" class="topFlag"></div>
+		<form class="form-horizontal form-simple" name="allForms">
+			<div class="main-tab-content div-content">
+				<div ng-repeat="item in settings.forms" class="tab-pane" data-ref="{{item.formid}}" ng-show="(!treeFormKey && item.default) || (treeFormKey && treeFormKey == (item.formid + ';' + (item.sxh ? item.sxh : 'undefined') + ';' + (item.subtype ? item.subtype : 'undefined')))" style="height:100%">
+					<div ng-include="'views/forms/' + item.url" class="tab-include" style="height:100%"></div>
+				</div>
+			</div>
+		</form>
+		<div class="gm-form-toolbar" ng-if="qszt==1">
+			<button style="margin: 10px" ng-repeat="button in settings.buttons" class="btn btn-primary" ng-click="invokePlugin(this, button.plugin,button.successMsg,button.failureMsg)" page-valid>
+        		{{button.name}}
+   			</button>
+		</div>
+		<div class="gm-form-toolbar" ng-if="qszt!==1">
+			<button style="margin: 10px" class="btn btn-primary" ng-click="invokePlugin(this, 'goBack')">返回</button>
+		</div>
+	</div>
+</div>

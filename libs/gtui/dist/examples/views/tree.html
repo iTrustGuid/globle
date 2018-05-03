@@ -1,0 +1,180 @@
+<div ng-controller="treeCtrl">
+    <h2>{{pItem.caption}}</h2>
+    <aside>
+        插件使用了第三方书插件，详细内容请查看官方文档：
+        <a href="https://github.com/angular-ui-tree/angular-ui-tree" target="_blank">angular-ui-tree</a>
+    </aside>
+    <div id="tree-common">
+        <h3>树插件</h3>
+        <div class="description">
+            <h4>插件demo如下：</h4>
+            <gm-tree treedata="treeData" data-check = false data-icon = true config = "config"  showquery=true></gm-tree>
+            <h4>插件代码如下：</h4>
+            <pre>
+                <strong>JS代码</strong>
+                <code class="js">
+                    //绑定树插件数据
+                    $scope.treeData = [{
+                        name:"湖北省",
+                        value:"hubei",
+                        collapsed:false,
+                        children:[{
+                            name:"武汉市",
+                            value:"wuhan",
+                            nodeType:"error",
+                            check:true,
+                            children:[{
+                                name:"新洲区",
+                                html:"&lt;span class=&#x27;sss&#x27; att=&#x27;11&#x27;&gt;新洲区&lt;span&gt;hah&lt;/span&gt;&lt;/span&gt;&lt;input type=&#x27;text&#x27; name=&#x27;111&#x27;&gt;",
+                                value:"xinzhou"
+                            },{
+                                name:"阳逻",
+                                value:"yangluo",
+                                nodeType:"disabled"
+                            }]
+                        },{
+                            name:"黄石市",
+                            value:"huangshi",
+                            children:[{
+                                name:"市区",
+                                value:"shiqu"
+                            }]
+                        }]
+                    },{
+                        name:"湖南省",
+                        value:"hunan",
+                        children:[{
+                            name:"武汉市",
+                            value:"wuhan",
+                            nodeType:"error",
+                            check:true,
+                            children:[{
+                                name:"新洲区",
+                                html:"&lt;span class=&#x27;sss&#x27; att=&#x27;11&#x27;&gt;新洲区&lt;span&gt;hah&lt;/span&gt;&lt;/span&gt;&lt;input type=&#x27;text&#x27; name=&#x27;111&#x27;&gt;",
+                                value:"xinzhou"
+                            },{
+                                name:"阳逻",
+                                value:"yangluo",
+                                nodeType:"disabled"
+                            }]
+                        },{
+                            name:"黄石市",
+                            value:"huangshi",
+                            children:[{
+                                name:"市区",
+                                value:"shiqu"
+                            }]
+                        }]
+                    }];
+
+                    //树插件配置
+                    $scope.config = {
+                        checkNode:"checkNode",
+                        activeNode:"activeNode",
+                        name:"name",
+                        children:"children"
+                    };
+
+                    //绑定选择树节点函数
+                    $scope.checkNode = function(arrayCheckNodes){
+                        console.log("选中树节点：",arrayCheckNodes);
+                    };
+
+                    //绑定聚焦树节点函数
+                    $scope.activeNode = function(pNode){
+                        console.log("焦点树节点：",pNode);
+                    };
+                </code>
+                <strong>Html代码</strong>
+                <code class="html">
+                    &lt;gm-tree treedata=&quot;treeData&quot; data-check = true data-icon = true config = &quot;config&quot;  showquery=true&gt;
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div id="tree-combo">
+        <h3>下拉树插件</h3>
+        <div class="description">
+            <h4>插件demo如下：</h4>
+            <gm-combo-tree treedata="treeData1" binddata="selectValue" config = "config1" showquery=true></gm-combo-tree>
+            <label for="">选中节点：</label><span ng-bind="selectValue"></span>
+            <h4>插件代码如下：</h4>
+            <pre>
+                <strong>JS代码</strong>
+                <code class="js">
+                    //树插件配置
+                    $scope.config1 = {
+                        selectNode :"selectNode",
+                        name:"name",
+                        children:"children"
+                    };
+
+                    //绑定树插件数据
+                    $scope.treeData1 = [{
+                        name:"湖北省",
+                        value:"hubei",
+                        collapsed:false,
+                        children:[{
+                            name:"武汉市",
+                            value:"wuhan",
+                            nodeType:"error",
+                            check:true,
+                            children:[{
+                                name:"新洲区",
+                                html:"&lt;span class=&#x27;sss&#x27; att=&#x27;11&#x27;&gt;新洲区&lt;span&gt;hah&lt;/span&gt;&lt;/span&gt;&lt;input type=&#x27;text&#x27; name=&#x27;111&#x27;&gt;",
+                                value:"xinzhou"
+                            },{
+                                name:"阳逻",
+                                value:"yangluo",
+                                nodeType:"disabled"
+                            }]
+                        },{
+                            name:"黄石市",
+                            value:"huangshi",
+                            children:[{
+                                name:"市区",
+                                value:"shiqu"
+                            }]
+                        }]
+                    },{
+                        name:"湖南省",
+                        value:"hunan",
+                        children:[{
+                            name:"武汉市",
+                            value:"wuhan",
+                            nodeType:"error",
+                            check:true,
+                            children:[{
+                                name:"新洲区",
+                                html:"&lt;span class=&#x27;sss&#x27; att=&#x27;11&#x27;&gt;新洲区&lt;span&gt;hah&lt;/span&gt;&lt;/span&gt;&lt;input type=&#x27;text&#x27; name=&#x27;111&#x27;&gt;",
+                                value:"xinzhou"
+                            },{
+                                name:"阳逻",
+                                value:"yangluo",
+                                nodeType:"disabled"
+                            }]
+                        },{
+                            name:"黄石市",
+                            value:"huangshi",
+                            children:[{
+                                name:"市区",
+                                value:"shiqu"
+                            }]
+                        }]
+                    }];
+
+                    //绑定选定树节点函数
+                    $scope.selectNode = function(pNode){
+                        console.log("焦点树节点：",pNode);
+                    };
+                </code>
+
+                <strong>Html代码</strong>
+                <code class="html">
+                    &lt;gm-combo-tree treedata=&quot;treeData1&quot; binddata=&quot;selectValue&quot; config = &quot;config1&quot; showquery=true&gt;&lt;/gm-combo-tree&gt;
+                </code>
+            </pre>
+        </div>
+    </div>
+
+</div>

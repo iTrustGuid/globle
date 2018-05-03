@@ -1,0 +1,126 @@
+/*---登录页----*/
+.logn-header {
+  position: fixed;
+  width: 100%;
+  height: 80px ;
+  z-index: 99;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 18%;
+  overflow: hidden;
+}
+.logn-header .logo-box-left .img-box {
+  width: 178px;
+  padding: 16px;
+}
+.logn-header .logo-box-left .img-box img {
+  width: 100%;
+  height: auto;
+}
+.logn-header .logo-box-left span {
+  margin-top: 18px;
+  height: 42px;
+  font: 20px/42px "\5FAE\8F6F\96C5\9ED1";
+  padding-left: 18px;
+  border-left: 1px solid #cdcdcd ;
+}
+.logn-header .logo-box-right {
+  line-height: 80px;
+}
+.logn-header .logo-box-right span {
+  padding: 0 16px;
+}
+.logn-header .logo-box-right span:nth-of-type(2) {
+  border-left: 1px solid #cdcdcd ;
+}
+.logn-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 80px 0 50px;
+}
+.logn-content .back-img {
+  width: 100%;
+  height: 100%;
+}
+.logn-content .logn-content-box {
+  position: absolute;
+  width: 318px;
+  background: #fff;
+  top: 200px;
+  right: 22%;
+}
+.logn-content .logn-content-box .title {
+  height: 50px;
+  line-height: 50px;
+  padding-left: 35px;
+  background: #efefef;
+}
+.logn-content .logn-content-box .list {
+  margin-top: 20px;
+  padding: 0 38px;
+}
+.logn-content .logn-content-box .list li {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.logn-content .logn-content-box .list li input {
+  width: 100%;
+  line-height: 34px;
+  padding: 0 30px;
+}
+.logn-content .logn-content-box .list li i {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: #d2d2d2;
+}
+.logn-content .logn-content-box .list li .clear {
+  left: 220px;
+}
+.logn-content .logn-content-box .list li:nth-of-type(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.logn-content .logn-content-box .list li:nth-of-type(3) .left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.logn-content .logn-content-box .list li:nth-of-type(3) .right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 5px 0 0 12px;
+}
+.logn-content .logn-content-box .list li:nth-of-type(3) .right img {
+  display: inline-block;
+  width: 50%;
+}
+.logn-content .logn-content-box .list li:nth-of-type(3) .right span {
+  display: inline-block;
+  width: 45%;
+}
+.logn-content .logn-content-box .list li:nth-of-type(4) {
+  margin-bottom: 10px;
+  display: none;
+}
+.logn-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  text-align: center;
+  line-height: 50px;
+}
+.icon-remove-sign {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=login1-eaffd.css.map*/

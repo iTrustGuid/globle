@@ -1,0 +1,95 @@
+<header class="dialog-header">
+    <h4 class="modal-title">子系统 添加/修改</h4>
+</header>
+<div class="dialog-content">
+    <form class="form-horizontal form-simple" name="appForm">
+        <table class="table table-fixed">
+            <tr class="catagory">
+                <td colspan="12">
+                    <span>基础配置</span>
+                </td>
+            </tr>
+        	<tr>
+                <td colspan="4" class="td-label">
+                    <label>系统图片</label>
+                </td>
+                <td colspan="8" class="td-value">
+                    <form class="form-horizontal">
+                        <input style="display:inline-block; padding-left: 30px;" type="file" id="upfile" onchange="angular.element(this).scope().onc(this.files)" />
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="td-label">
+                    <label>系统名</label>
+                </td>
+                <td colspan="8" class="td-value">
+                    <input type="text"  name="appName" ng-model="copyFocusItem.name" validator="required">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="td-label">
+                    <label>系统标题</label>
+                </td>
+                <td colspan="8" class="td-value">
+                    <input type="text"  ng-model="copyFocusItem.title" name="appTitle" validator="required">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="td-label">
+                    <label>系统地址</label>
+                </td>
+                <td colspan="8" class="td-value">
+                    <input type="text" ng-model="copyFocusItem.host" name="appHost" validator="required">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="td-label">
+                    <label>描述</label>
+                </td>
+                <td colspan="8" class="td-value">
+                    <input type="text" ng-model="copyFocusItem.description">
+                </td>
+            </tr>
+            <tr class="catagory">
+                <td colspan="12">
+                    <span>登录配置</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="td-label">
+                    <label>是否登录系统</label>
+                </td>
+                <td colspan="8" class="td-value">
+                	<ui-select ng-model="copyFocusItem.selected" ng-disabled="bDisabled">
+				        <ui-select-match>{{$select.selected.label}}</ui-select-match>
+				        <ui-select-choices repeat="item in ssoServerData| filter: $select.search.label">
+				            <div ng-bind-html="item.label | highlight: $select.search"></div>
+				        </ui-select-choices>
+				    </ui-select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="td-label">
+                    <label>登录ID</label>
+                </td>
+                <td colspan="8" class="td-value">
+                    <input type="text" ng-model="copyFocusItem.ssoKey" name="ssoKey" validator="required">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="td-label">
+                    <label>系统登出地址</label>
+                </td>
+                <td colspan="8" class="td-value">
+                    <input type="text" ng-model="copyFocusItem.ssoLogoutUrl" name="ssoLogoutUrl" validator="required">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="dialog-buttons">
+    <button type="button" class="btn btn-default" ng-click="closeDialog()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="">保存</button>
+</div>
+

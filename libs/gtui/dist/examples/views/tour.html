@@ -1,0 +1,44 @@
+<div ng-controller="tourCtrl">
+    <h2>{{pItem.caption}}</h2>
+	<aside>示例只展示简单用法，详细内容请查看官方文档：
+		<a href="http://benmarch.github.io/angular-ui-tour/#/docs" target="_blank">angular-ui-tour</a>
+	</aside>
+	<div id="tour">
+		<h3>用户向导插件</h3>
+    	<div class="description">
+			<h4>插件demo如下：</h4>
+			<div ui-tour ui-tour-backdrop="true" ui-tour-append-to-body="true" ui-tour-use-hotkeys="true">
+				<div id="mainMenu" tour-step tour-step-title="Main Menu" tour-step-content="Navigate the site using this menu." tour-step-order="0" tour-step-placement="right"
+				 tour-step-fixed = "true">
+					<span>我是第一个向导</span>
+				</div>
+				<div id="settings" tour-step tour-step-title="Settings" tour-step-content="Click here to change your settings." tour-step-order="1">
+					<span>我是第二个向导</span>
+				</div>
+				<div id="finalTourMessage" tour-step tour-step-title="Welcome!" tour-step-content="Enjoy using the app!" tour-step-order="2" tour-step-orphan="true" tour-step-backdrop="true">
+					<span>我是第三个向导</span>
+				</div>
+				<button class="btn btn-primary" ng-click="tour.start();">开始向导</button>
+			</div>
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>Html代码</strong>
+				<code class="html">
+				&lt;div ui-tour ui-tour-backdrop=&quot;true&quot; ui-tour-append-to-body=&quot;true&quot; ui-tour-use-hotkeys=&quot;true&quot;&gt;
+					&lt;div id=&quot;mainMenu&quot; tour-step tour-step-title=&quot;Main Menu&quot; tour-step-content=&quot;Navigate the site using this menu.&quot; tour-step-order=&quot;0&quot; tour-step-placement=&quot;right&quot;
+					 tour-step-fixed = &quot;true&quot;&gt;
+						&lt;span&gt;我是第一个向导&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div id=&quot;settings&quot; tour-step tour-step-title=&quot;Settings&quot; tour-step-content=&quot;Click here to change your settings.&quot; tour-step-order=&quot;1&quot;&gt;
+						&lt;span&gt;我是第二个向导&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div id=&quot;finalTourMessage&quot; tour-step tour-step-title=&quot;Welcome!&quot; tour-step-content=&quot;Enjoy using the app!&quot; tour-step-order=&quot;2&quot; tour-step-orphan=&quot;true&quot; tour-step-backdrop=&quot;true&quot;&gt;
+						&lt;span&gt;我是第三个向导&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;button class=&quot;btn btn-primary&quot; ng-click=&quot;tour.start();&quot;&gt;开始向导&lt;/button&gt;
+				&lt;/div&gt;
+				</code>
+			</pre>
+		</div>
+    </div>
+</div>

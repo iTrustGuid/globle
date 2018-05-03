@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>示例页面</title>
+        <script type="text/javascript">
+            var STATIC_RESOURCES_PATH = '../../';
+        </script>
+    </head>
+    <body ng-controller="mainCtrl" >
+        <header ng-class="{'show-header':showHeader}">
+            <h1>插件使用示例</h1>
+        </header>
+        <div class="content ng-cloak">
+            <div class="content-left">
+                <nav class="menu">
+                    <ul id="treeMenu" class="tree tree-menu">
+                        <li ng-repeat="pItem in arrayControls" ng-class="{'nav-not-parent':pItem.children == null,'active':pItem.id === selectId,'open in':pItem.bOpen}" ng-click="selectItem(pItem,$event)">
+                            <i ng-if="pItem.children != null" class="list-toggle icon"></i>
+                            <a href="javascript:void(0);"><i class="icon icon-th"></i> {{pItem.caption}}</a>
+                            <ul ng-if="pItem.children != null">
+                                <li ng-repeat="pSubItem in pItem.children" ng-class="{'active':pSubItem.id === selectId}" ng-click="selectItem(pSubItem,$event)">
+                                    <a href="javascript:void(0);"><i class="icon icon-circle-blank"></i>{{pSubItem.caption}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="content-right">
+                <div ng-repeat="pItem in arrayControls" id="{{pItem.id}}">
+                    <div ng-include="pItem.url"></div>
+                </div>
+            </div>
+        </div>
+        <footer></footer>
+        <script type="text/javascript" src="../../dist/loader-example.js"></script>
+    </body>
+</html>

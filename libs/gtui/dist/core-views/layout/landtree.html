@@ -1,0 +1,121 @@
+<!--
+	时间：2017-08-27
+	描述：包含建设用地树目录的页面组织结构
+-->
+<div ng-if="topFlag && topFlag=='1'" ng-include="'views/components/top.html'" class="topFlag"></div>
+<ul class="nav nav-tabs">
+	<li ng-class="{'active':landPageDefault}">
+		<a data-tab href="#tabLand">建设用地上报材料</a>
+	</li>
+	<li ng-repeat="item in tabs" ng-class="{'active':item.default}">
+		<a data-tab href="#tabContent{{$index}}">{{item.name}}</a>
+	</li>
+</ul>
+<div class="tab-content main-tab-content div-content" ng-class="{'readonly':qszt===0}">
+	<div class="tab-pane" ng-class="{'active':landPageDefault}" id="tabLand" ng-controller="landCtrl" style="height: 100%;">
+		<div class="row tree-form">
+			<div class="tree-box scrollbar-hover">
+				<div class="layer-tool">
+					<div ng-if="!landSubProjects || landSubProjects.length < 1" class="tool-item" title="创建案卷" data-toggle="modal" data-target="#btModal"><i class="icon icon-plus-sign"></i>起草</div>
+					<div class="tool-item" title="新增批次" data-toggle="modal" data-target="#pcModal"><i class="icon icon-plus-sign"></i>批次</div>
+					<div class="tool-item" title="新增地块" ng-if="focusNode.clbh != null" data-toggle="modal" data-target="#landModal"><i class="icon icon-plus-sign"></i>地块</div>
+					<div class="tool-item" title="删除批次" ng-if="focusNode.isPc == true" ng-click="deleteLandSubProject()"><i class="icon icon-minus-sign"></i>批次</div>
+					<div class="tool-item" title="删除地块" ng-if="focusNode.dkbh != null" ng-click="deleteLandPlotName()"><i class="icon icon-minus-sign"></i>地块</div>
+
+					<!--新增批次模态框-->
+					<div class="modal fade" id="pcModal">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+								<h4 class="modal-title">新增批次</h4>
+							</div>
+							<div class="modal-content">
+								<table class="table table-bordered table-fixed">
+									<tbody>
+										<tr>
+											<td class="panel-footer" colspan="2"><label>批次名称</label>
+											</td>
+											<td colspan="10">
+												<input type="text" ng-model="piciData.piciName">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<button type="button" class="btn btn-primary" ng-click="addLandSubProject()">保存</button>
+							</div>
+						</div>
+					</div>
+					<!--新增地块模态框-->
+					<div class="modal fade" id="landModal">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+								<h4 class="modal-title">新增地块</h4>
+							</div>
+							<div class="modal-content">
+								<table class="table table-bordered table-fixed">
+									<tbody>
+										<tr>
+											<td class="panel-footer" colspan="2"><label>地块名称</label>
+											</td>
+											<td colspan="10">
+												<input type="text" ng-model="piciData.geometryName">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<button type="button" class="btn btn-primary" ng-click="addLandPlotName()">保存</button>
+							</div>
+						</div>
+					</div>					
+					<!--新增案卷模态框-->
+					<div class="modal fade" id="btModal">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+								<h4 class="modal-title">起草案卷</h4>
+							</div>
+							<div class="modal-content">
+								<table class="table table-bordered table-fixed">
+									<tbody>
+										<tr>
+											<td class="panel-footer" colspan="2"><label>案卷名称</label>
+											</td>
+											<td colspan="10">
+												<input type="text" ng-model="caseInfo.title">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<button type="button" class="btn btn-primary" ng-click="setCaseName()">保存</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<gm-tree treedata="landSubProjects" data-check="false" data-collapsed="false" data-icon="true" config="landTreeConfig"></gm-tree>
+			</div>
+			<div class="tree-form-box scrollbar-hover">
+				<div ng-repeat="item in tabPages" data-div-key="{{item.formid}};{{item.treeKey}}" ng-show="treeFormKey && treeFormKey==item.formid+';'+item.treeKey" style="height: 100%">
+					<div ng-include="'views/forms/' + item.url" data-url="views/forms/{{item.url}}"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-repeat="item in tabs" class="tab-pane" ng-class="{'active':item.default}" id="tabContent{{$index}}" style="height: 100%;">
+		<div ng-include="'views/forms/' + item.url" data-url="views/forms/{{item.url}}"></div>
+	</div>
+</div>
+<div class="gm-form-toolbar maxWidth" ng-if="qszt==1">
+	<button style="margin: 10px;margin-top:0;" ng-repeat="button in buttons" class="btn btn-primary" ng-click="saveGraphStatics();invokePlugin(button.plugin,button.successMsg,button.failureMsg)" page-valid>
+        {{button.name}}
+    </button>
+</div>

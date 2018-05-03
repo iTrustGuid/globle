@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>XXX地下管网系统</title>
+    <script type="text/javascript">
+    var STATIC_RESOURCES_PATH = '../../libs/gtui/'
+    </script>
+    <script type="text/javascript" src="../../libs/gtui/dist/loader-frame0.js"></script>
+    <script type="text/javascript" src="./config.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('loginApp', []);
+    </script>
+</head>
+
+<body>
+    <!--[if lt IE 9]>
+<div class="alert alert-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a> 来提升用户体验.</div>
+<![endif]-->
+    <div ng-controller="loginCtrl" style="height: 100%;">
+        <banner style="background-image:url({{loginInfo.bjUrl}}) ;" ng-style="{'height':loginInfo.footer ? 'calc(100% - 60px)' : '100%'}">
+            <div class="title">
+                <div class="logBox">
+                    <img ng-if="loginInfo.logo" ng-src="{{loginInfo.logo}}" />
+                </div>
+                <div class="titleText">
+                    <p>{{loginInfo.cname}}</p>
+                    <p>{{loginInfo.ename}}</p>
+                </div>
+            </div>
+            <div class="content" ng-style="{'height':loginInfo.footer ? 'calc(100% - 125px)' : '100%'}">
+                <div class="swiperBox" ng-if="loginInfo.swiperImgs">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div ng-repeat="item in loginInfo.swiperImgs" class="swiper-slide">
+                                <img ng-src="{{item.url}}" /><span class="tips showTips">{{item.caption}}</span>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <form ng-show="loginInfo.system != 'ww' && !changePassword">
+                    <div class="inputBox">
+                        <div class="inputTitle">用户登录</div>
+                        <ul class="inputList">
+                            <li>
+                                <img class="iconImg" ng-src="{{userImg}}" />
+                                <input class="form-control" type="text" value="" ng-model="loginData.username" name="username" placeholder="请输入您的用户名" />
+                            </li>
+                            <li>
+                                <img class="iconImg" ng-src="{{passwordImg}}" />
+                                <input class="form-control" value="" ng-model="loginData.password" name="password" type="password" placeholder="请输入您的密码" />
+                            </li>
+                        </ul>
+                        <div class="btnBox">
+                            <button class="btn-submit" type="button" name="submit" ng-click="submit()">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </banner>
+        <footer ng-if="loginInfo.footer" ng-bind-html="loginInfo.footer | to_trusted"></footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<div ng-controller="carouselCtrl">
+    <h2>{{pItem.caption}}</h2>
+	<aside>示例只展示简单用法，详细内容请查看官方文档：
+		<a href="https://github.com/revolunet/angular-carousel" target="_blank">angular-carousel</a>
+	</aside>
+	<div id="carousel">
+		<h3>轮播插件</h3>
+    	<div class="description">
+			<h4>插件demo如下：</h4>
+			<div class="carousel-demo">
+				<ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-buffered rn-carousel-auto-slide = "5"
+					rn-carousel-pause-on-hover rn-carousel-controls rn-carousel-controls-allow-loop rn-carousel-duration = "300"
+					rn-carousel-transition = "hexagon" class="carousel1">
+					<li ng-repeat="slide in slides track by slide.id" ng-class="'id-' + slide.id">
+						<div ng-style="{'background-image': 'url(' + slide.img + ')'}">
+							#{{ slide.id }}
+						</div>
+					</li>
+				</ul>
+				<div rn-carousel-indicators ng-if="slides.length > 1" slides="slides" rn-carousel-index="carouselIndex"></div>
+			</div>
+
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>JS代码</strong>
+				<code class="js">
+				$scope.slides = [{
+					id:1,
+					img:"img/slide1.jpg"
+				},{
+					id:2,
+					img:"img/slide2.jpg"
+				},{
+					id:3,
+					img:"img/slide3.jpg"
+				}];
+				</code>
+				<strong>Html代码</strong>
+				<code class="html">
+				&lt;div class=&quot;carousel-demo&quot;&gt;
+					&lt;ul rn-carousel rn-carousel-index=&quot;carouselIndex&quot; rn-carousel-buffered rn-carousel-auto-slide = &quot;5&quot;
+						rn-carousel-pause-on-hover rn-carousel-controls rn-carousel-controls-allow-loop rn-carousel-duration = &quot;300&quot;
+						rn-carousel-transition = &quot;hexagon&quot; class=&quot;carousel1&quot;&gt;
+						&lt;li ng-repeat=&quot;slide in slides track by slide.id&quot; ng-class=&quot;&#x27;id-&#x27; + slide.id&quot;&gt;
+							&lt;div ng-style=&quot;{&#x27;background-image&#x27;: &#x27;url(&#x27; + slide.img + &#x27;)&#x27;}&quot;&gt;
+								#{{ slide.id }}
+							&lt;/div&gt;
+						&lt;/li&gt;
+					&lt;/ul&gt;
+					&lt;div rn-carousel-indicators ng-if=&quot;slides.length &gt; 1&quot; slides=&quot;slides&quot; rn-carousel-index=&quot;carouselIndex&quot;&gt;&lt;/div&gt;
+				&lt;/div&gt;
+				</code>
+			</pre>
+		</div>
+    </div>
+</div>

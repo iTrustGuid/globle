@@ -1,0 +1,16 @@
+<header class="dialog-header">
+    <h4 class="modal-title">流程流转详情</h4>
+</header>
+<div class="dialog-content">
+	<div class="dialog-query-content">
+		<div class="dialog-content-table">
+			<div ui-grid="lzGridOptions" class="grid"></div>
+		</div>
+		<gm-pagination pagedata="pendingPageLz"></gm-pagination>
+	</div>
+</div>
+<div class="dialog-buttons">
+    <button type="button" class="btn btn-default" ng-click="closeDialog()">关闭</button>
+</div>
+
+

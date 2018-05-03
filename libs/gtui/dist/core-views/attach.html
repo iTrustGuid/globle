@@ -1,0 +1,171 @@
+<div class="form-file-div" ng-controller="fileCtrl">
+	<div class="tree-div">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li title="上传材料" ng-if="activeFolder" ng-click="uploadFile()">
+						<a href="javascript:void(0);"><i class="icon icon-plus-sign"></i></a>
+					</li>
+					<li title="扫描材料" ng-click="captureImg()">
+						<a href="javascript:void(0);"><i class="icon icon-camera"></i></a>
+					</li>
+					<li title="编辑材料" ng-if="activeFolder" ng-click="$event.preventDefault();editFolder();">
+						<a href="###"><i class="icon icon-edit"></i></a>
+					</li>
+					<li title="删除材料" ng-if="activeFolder">
+						<a href="javascript:void(0);" ng-click="$event.preventDefault();deleteFolder();"><i class="icon icon-minus-sign"></i></a>
+					</li>
+					<li title="删除文件" ng-if="activeFolder === false" ng-click="deleteFile();">
+						<a href="javascript:void(0);"><i class="icon icon-minus-sign"></i></a>
+					</li>
+					<li title="修改文件" ng-if="activeFolder === false" ng-click="editFile();">
+						<a href="###"><i class="icon icon-edit"></i></a>
+					</li>
+					<li title="查看文件" ng-if="activeFolder === false" ng-click="viewFile();">
+						<a href="###"><i class="icon icon-external-link"></i></a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li title="新建材料">
+						<a href="javascript:;" ng-click="addFolder();"><i class="icon icon-plus-sign"></i></a>
+					</li>
+				</ul>
+				<input type="file" class="hidden" id="file_upload">
+			</div>
+		</nav>
+		<gm-tree treedata="fileTree" data-check="false" data-icon="true" data-collapsed="false" config="fileTreeConfig"></gm-tree>
+	</div>
+	<div class="content-div">
+		<img ng-src="{{imgUrl}}" alt="">
+	</div>
+
+	<!--材料模态框-->
+	<script type="text/ng-template" id="folderModal.html">
+		<header class="dialog-header">
+			<h4 class="modal-title">新增/修改材料</h4>
+		</header>
+		<div class="dialog-content tab-content">
+			<form class="form-horizontal form-simple" name="folderForm">
+				<table class="table table-fixed">
+					<tr>
+						<td colspan="2" class="td-label"><label>材料名称</label></td>
+						<td colspan="4" class="td-value"><input type="text" ng-model="copyFocusItem.name" validator="required"></td>
+						<td colspan="2" class="td-label"><label>收件类型</label></td>
+						<td colspan="4" class="td-value">
+							<gm-dic-select type="收件类型" binddata="copyFocusItem.type"></gm-dic-select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="td-label"><label>收件数量</label></td>
+						<td colspan="4" class="td-value"><input type="text" ng-model="copyFocusItem.sl"></td>
+						<td colspan="2" class="td-label"><label>页数</label></td>
+						<td colspan="4" class="td-value"><input type="text" ng-model="copyFocusItem.ys"></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="td-label"><label>收缴收验</label></td>
+						<td colspan="4" class="td-value"><input type="text" ng-model="copyFocusItem.sfsjsy"></td>
+						<td colspan="2" class="td-label"><label>额外收件</label></td>
+						<td colspan="4" class="td-value"><input type="text" ng-model="copyFocusItem.sfewsy"></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="td-label"><label>补充收件</label></td>
+						<td colspan="4" class="td-value">
+							<gm-dic-select type="是否" binddata="copyFocusItem.sfbcsj"></gm-dic-select>
+						</td>
+						<td colspan="2" class="td-label"><label>备注</label></td>
+						<td colspan="4" class="td-value"><input type="text" ng-model="copyFocusItem.bz" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div class="dialog-buttons">
+			<button type="button" class="btn btn-default" ng-click="closeDialog()">关闭</button>
+			<button type="button" class="btn btn-primary" ng-click="saveFolder(this);$event.stopPropagation();">保存</button>
+		</div>
+	</script>
+	<!--文件模态框-->
+	<div class="modal fade" id="fileModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+					<h4 class="modal-title">修改文件</h4>
+				</div>
+				<div class="modal-body">
+					<div class="div-content gm-form-control tab-content">
+						<table class="table table-bordered panel-footer table-fixed">
+							<tr>
+								<td colspan="1"><label>文件名称</label></td>
+								<td colspan="2">
+									<input type="text" ng-model="copyFocusItem.name" />
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" ng-click="saveFile();">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--扫描对话框-->
+	<div style="display:none;" class="oa-capture-dialog">
+		<OBJECT ID="EloamGlobal_ID" CLASSID="CLSID:52D1E686-D8D7-4DF2-9A74-8B8F4650BF73"></OBJECT>
+		<div class="oa-capture-div">
+			<div class="oa-capture-capture" style="flex:1" ng-show="view !== 'img'">
+				<div class="oa-capture-view" id="capture-view-container">
+					<OBJECT ID="CaptureView" CLASSID="" style="height:100%;width:100%"></OBJECT>
+				</div>
+				<div class="oa-capture-tool">
+					<select ng-model="selectCamera" ng-change="chooseCamera($index)">
+						<option value="{{$index}}" ng-repeat="item in arrayCameras">{{item}}</option>
+					</select>
+					<select ng-model="selectResolution" ng-change="chooseResolution($index)">
+						<option value="{{$index}}" ng-repeat="item in arrayResolutions">{{item}}</option>
+					</select>
+					<button class="btn btn-primary" ng-click="updateCamera()">刷新设备</button>
+					<button class="btn btn-primary" ng-click="shoot()" data-loading-text="正在拍摄...">拍摄</button>
+				</div>
+			</div>
+			<div class="oa-capture-upload" style="flex:1;height:100%" ng-show="view === 'img'">
+				<div style="height:calc(100% - 40px)">
+					<img src="data:image/png;base64,{{imgBase64}}" style="width:100%;height:100%;">
+				</div>
+				<div class="oa-capture-tool">
+					<button class="btn btn-primary" ng-click="reshoot();">重新拍摄</button>
+				</div>
+			</div>
+			<div style="width:400px;border-left:solid 1px #f1f1f1;height: 100%;">
+				<div class="oa-capture-table-div">
+					<table class="oa-capture-table table datatable table-striped table-fixed table-bordered">
+						<thead>
+							<th>名称</th>
+							<th data-width="70px">状态</th>
+							<th data-width="90px">操作</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in tableData">
+								<td><input type="text" ng-model="item.name"></td>
+								<td>{{item.uploadStatus}}</td>
+								<td>
+									<a href="javascript:void(0);" ng-click="viewImg(item)" title="查看">
+										<i class="icon icon-info-sign"></i>
+									</a>
+									<a href="javascript:void(0);" ng-click="deleteItem(item)" title="删除">
+										<i class="icon icon-remove-sign"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="oa-capture-tool">
+					<button class="btn btn-primary" ng-click="uploadFile()">上传</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

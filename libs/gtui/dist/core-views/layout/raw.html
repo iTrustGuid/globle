@@ -1,0 +1,11 @@
+<!--原生模板，仅包含一个表单与功能按钮-->
+<div class="main-tab-content gm-form-control div-content">
+	<div ng-repeat="item in tabs">
+		<div ng-include="'views/forms/' + item.url" data-url="views/forms/{{item.url}}" ></div>
+	</div>
+</div>
+<div class="gm-form-toolbar">
+	<button style="margin: 10px" ng-repeat="button in buttons" class="btn btn-primary" ng-click="invokePlugin(button.plugin,button.successMsg,button.failureMsg)" page-valid>
+        {{button.name}}
+    </button>
+</div>

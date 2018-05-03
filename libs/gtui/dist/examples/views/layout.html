@@ -1,0 +1,118 @@
+<div ng-controller="layoutCtrl">
+    <h2>{{pItem.caption}}</h2>
+	<div id="layout-tab">
+		<h3>标签插件</h3>
+    	<div class="description">
+        <h4>插件demo如下：</h4>
+        <gm-tags tagdata="tagdata" multi="false" style="width:1500px"></gm-tags>
+        <h4>插件代码如下：</h4>
+		<pre>
+            <strong>JS代码</strong>
+			<code class="js">
+
+			//绑定标签数据
+	        $scope.tagdata = {
+	            checkTag:"checkTag1",
+	            tags:[{
+	                name:"建设",
+	                value:"1"
+	            },{
+	                name:"建设用地使用权",
+	                value:"2"
+	            },{
+	                name:"建设用地使用权",
+	                value:"3"
+	            },{
+	                name:"建设用地使用权",
+	                value:"4"
+	            },{
+	                name:"建设用地使用权",
+	                value:"5"
+	            },{
+	                name:"建设用地使用权",
+	                value:"6"
+	            },{
+	                name:"建设用地使用权",
+	                value:"7"
+	            },{
+	                name:"建设用地使用权",
+	                value:"8"
+	            }]
+	        };
+
+	        //选中标签触发的函数
+	        $scope.checkTag1 = function(pItem){
+	            console.log("选择标签",pItem);
+	        }
+			</code>
+		</pre>
+        <pre>
+	        <strong>Html代码</strong>
+			<code class="html">
+                &lt;gm-tags tagdata=&quot;tagdata&quot; multi=&quot;false&quot;&gt;&lt;/gm-tags&gt;
+            </code>
+		</pre>
+    </div>
+	</div>
+	<div id="layout-date">
+		<h3>日期插件</h3>
+		<aside>示例使用了第三方下拉框插件，详细内容请查看官方文档：
+			<a href="http://www.malot.fr/bootstrap-datetimepicker" target="_blank">datetimepicker官方文档</a>
+		</aside>
+		<div class="description">
+        <h4>插件demo如下：</h4>
+		<label for="">选择日期(默认参数)：</label>
+        <input type="text" class="date-choose">
+		<label for="">选择日期(max-view="4" min-view="3")：</label>
+        <input type="text" class="date-choose" max-view="4" min-view="3">
+		<label for="">选择日期(max-view="4" min-view="0" minute-step="5")：</label>
+        <input type="text" class="date-choose" max-view="4" min-view="0" minute-step="5">
+        <label for="">选择日期(max-view="1" min-view="0" minute-step="5")：</label>
+        <input type="text" class="date-choose" max-view="1" min-view="0" minute-step="5">
+		<label for="">选择日期(btime="true")：</label>
+        <input type="text" class="date-choose" btime="true">
+        <label for="">选择时间：</label>
+        <input type="text" class="time-choose">
+        <h4>插件代码如下：</h4>
+            <pre>
+	        <strong>Html代码</strong>
+			<code class="html">
+			&lt;label for=&quot;&quot;&gt;选择日期(默认参数)：&lt;/label&gt;
+			&lt;input type=&quot;text&quot; class=&quot;date-choose&quot;&gt;
+			&lt;label for=&quot;&quot;&gt;选择日期(max-view=&quot;4&quot; min-view=&quot;3&quot;)：&lt;/label&gt;
+			&lt;input type=&quot;text&quot; class=&quot;date-choose&quot; max-view=&quot;4&quot; min-view=&quot;3&quot;&gt;
+			&lt;label for=&quot;&quot;&gt;选择日期(max-view=&quot;4&quot; min-view=&quot;0&quot; minute-step=&quot;5&quot;)：&lt;/label&gt;
+			&lt;input type=&quot;text&quot; class=&quot;date-choose&quot; max-view=&quot;4&quot; min-view=&quot;0&quot; minute-step=&quot;5&quot;&gt;
+			&lt;label for=&quot;&quot;&gt;选择日期(max-view=&quot;1&quot; min-view=&quot;0&quot; minute-step=&quot;5&quot;)：&lt;/label&gt;
+			&lt;input type=&quot;text&quot; class=&quot;date-choose&quot; max-view=&quot;1&quot; min-view=&quot;0&quot; minute-step=&quot;5&quot;&gt;
+			&lt;label for=&quot;&quot;&gt;选择日期(btime=&quot;true&quot;)：&lt;/label&gt;
+			&lt;input type=&quot;text&quot; class=&quot;date-choose&quot; btime=&quot;true&quot;&gt;
+			&lt;label for=&quot;&quot;&gt;选择时间：&lt;/label&gt;
+			&lt;input type=&quot;text&quot; class=&quot;time-choose&quot;&gt;
+            </code>
+		</pre>
+    </div>
+	</div>
+	<div id="layout-notify">
+		<h3>滚动通知插件</h3>
+
+		<div class="description">
+			<h4>插件demo如下：</h4>
+			<div class="" carousel-notify notify-data="notifyData" style="background: blue;width:100px" interval="3000"></div>
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>JS代码</strong>
+				<code class="js">
+
+				$scope.notifyData = ["数据字典表单验证问题；日期控件表单验证样式问题","我是消息"];
+				</code>
+			</pre>
+			<pre>
+				<strong>Html代码</strong>
+				<code class="html">
+				&lt;div class=&quot;&quot; carousel-notify notify-data=&quot;notifyData&quot; style=&quot;background: blue;width:100px&quot; interval=&quot;3000&quot;&gt;
+				</code>
+			</pre>
+		</div>
+	</div>
+</div>

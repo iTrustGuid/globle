@@ -1,0 +1,327 @@
+﻿<!doctype html public "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>图层列表</title>
+<style type="text/css">
+#earthContainer {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:85%;
+	height:100%;
+}
+#toolbox {
+	position:absolute;
+	right:0px;
+	top:0px;
+	width:15%;
+	height:100%;
+	overflow:auto;
+}
+#toolbox2 {
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	width:75%;
+	height:15%;
+}
+#propContainer {
+	position:absolute;
+	right:0px;
+	bottom:0px;
+	width:25%;
+	height:15%;
+}
+input {
+	padding:0 0.2em;
+	overflow:visible;
+}
+</style>
+<script  type="text/javascript">
+/*全局变量*/
+var uniscopeObj=null;
+/**
+ * 引擎初始化
+ */
+function pageLoad(){
+	uniscopeObj=document.getElementById("uniscope");
+	uniscopeObj.Init("D:\\earth_config_tdt.xml");//必须调控件本身的Init方法，否则球体加载失败
+	onCreateEarthCallback();
+}
+/**
+ * 引擎初始化时的回调函数
+ */
+function onCreateEarthCallback(){
+	//可以放入一些业务逻辑，比如定位到某个城市
+	uniscopeObj.GlobeObserver.Flytolookat(110.6864907524909, 35.6037856418678370, 100000, 90, 0, 0, 200, 8);
+	uniscopeObj.Environment.TerrainTransparency = 150;
+}
+/**
+ * 获取系统图层
+ * @param {String} layerType 图层类型，取值为DEM、DOM、Model、Block、MatchModel、Billboard、POI、Vector、Annotation
+ * @returns {Array} 图层数组
+ */
+function getSysLayers(layerType) {
+	var layerCollection={},layers=[],layer=null;
+	switch(layerType){
+		case "DEM":
+			layerCollection=uniscopeObj.GetStaticLayerCollection(7);
+			break;
+		case "DOM":
+			layerCollection=uniscopeObj.GetStaticLayerCollection(8);
+			break;
+		case "Model":
+			layerCollection=uniscopeObj.GetStaticLayerCollection(0);
+			break;
+		case "Block":
+			layerCollection=uniscopeObj.GetStaticLayerCollection(1);
+			break;
+		case "MatchModel":
+			layerCollection=uniscopeObj.GetStaticLayerCollection(2);
+			break;
+		case "Billboard":
+			layerCollection=uniscopeObj.GetStaticLayerCollection(3);
+			break;
+		case "POI":
+			layerCollection=uniscopeObj.GetStaticLayerCollection(4);
+			break;	
+		case "Vector":
+			layerCollection=uniscopeObj.GetStaticLayerCollection(5);
+			break;
+		case "Annotation":
+			layerCollection=uniscopeObj.GetStaticLayerCollection(6);
+			break;				
+		}
+		
+	for (var i=0,iCount=layerCollection.Count;i<iCount;i++){
+		layer=layerCollection.Items(i);
+		layers.push(layer);
+		}
+	return layers;
+}
+/**
+ * 获取图层列表
+ */	
+function getLayerList(layerType,ulId){
+	var layers=getSysLayers(layerType);
+	var layer=null;
+	var strArr=[];tempStr="",htmlStr="";
+	for (var i=0,iCount=layers.length;i<iCount;i++){
+		layer=layers[i];
+		tempStr='<li><input type="checkbox" onclick="toggleLayerVisible(\''+layer.Guid+'\')"/>'+layer.Name+"</li>";
+		strArr.push(tempStr);
+		}
+	htmlStr=strArr.join("");
+	document.getElementById(ulId).innerHTML=htmlStr;
+	}
+//lzs添加读取mdb表
+function serverMapPath(fileName) {
+ var syspath = location.href;  //file:///c:/Documents%20and%20Settings/Administrator/桌面/新建文件夹/handle-mdb.html
+ //alert(syspath)
+ //syspath = syspath.toLowerCase();
+ myPosition = syspath.lastIndexOf("/"); 
+ syspath = syspath.substring(0, parseInt(myPosition) + 1); 
+ syspath = syspath.replace("file:///", "");  
+ syspath = syspath.replace(new RegExp("%20", "gm"), " ");  
+ syspath = syspath + fileName;  //c:/documents and settings/administrator/桌面/新建文件夹/Database.mdb；
+ //alert(syspath)
+ return syspath.toString();
+}
+function loadData(fieldNameLZS) {
+   var conn = new ActiveXObject("ADODB.Connection");
+   var connStr = "DBQ=" + serverMapPath("河津一包.mdb") + ";DRIVER={Microsoft Access Driver (*.mdb)};"
+   //打开数据库；
+   conn.Open(connStr);
+   var rs = new ActiveXObject("ADODB.Recordset");
+   var sql = "select * from " + "RS_LINE "+"where 起点点号 = '"+fieldNameLZS+"'";
+   //打开记录集；
+   rs.open(sql, conn);
+   if (!rs.EOF) 
+   {
+     // var feildName = "";
+      //var valueCell = "";
+      //var inputs  = document.getElementsByTagName("input");
+      ///var textAreas = document.getElementsByTagName("textarea");
+   //rs.fields.count为字段名称的总数；
+      for(var z=0;rs.fields.count>z;z++)
+	  {
+   //filedName为字段名称； 
+         filedName = rs(z).Name;
+   //mdb中各字段内存储的值；
+         valueCell = (rs.Fields(filedName).Value);
+         if (valueCell == null)
+		 {
+			valueCell = "";
+		 }
+		 //alert("valueCell:"+valueCell);
+  // for (var i = 0; i < inputs.length; i++) {
+   //   var inputCell = inputs[i];   
+   //   if(filedName==inputCell.id){
+   //   inputCell.value=valueCell;
+  // }
+	  }
+   //for (var j = 0; j < textAreas.length; j++){
+            // var textAreaCell = textAreas[j];
+             //if (filedName == textAreas.id){
+             //     textAreaCell.value = valueCell;
+            // } 
+        // }
+     // }
+     // rs.moveNext();
+   }
+   rs.close;
+   rs = null;
+}
+function Navigate(){
+	uniscopeObj.ToolManager.SphericalObjectEditTool.Browse();//开启浏览工具				
+}
+
+function pickObjectEx(){
+	var searchServiceUrl = "http://192.98.102.54:2820/";//服务器地址//document.getElementById("searchServiceUrl").value;
+	if(searchServiceUrl.indexOf("http")==-1){
+		alert("请先设置三维服务器的地址!");
+		return;
+		}
+	//设置POISearch Service的地址	
+	uniscopeObj.Environment.SetServerLink(5, searchServiceUrl); 
+	//设置ModelSearch Service的地址
+	uniscopeObj.Environment.SetServerLink(6, searchServiceUrl); 
+    //     alert(searchServiceUrl );
+	uniscopeObj.Event.OnPickObjectEx=function(args){
+		window.clipboardData.setData('text',args.GetKey()); 
+		//alert("OnPickObjectEx事件参数为："+args.GetKey()+"，已拷贝到剪贴板。");
+		//获取被点击的对象
+		var id=args.GetKey();
+		alert("对象的名称为："+id);		
+		var layerName = args.GetParentLayerName();
+		loadData(id);
+		//var num = args.GetFieldCount();
+		//for(i = 0 ; i < num ; i++)
+		//{		GetParentLayerName()	GetParentLayerName()	String
+			//var fieldvalue = args.GetFieldValueByIndex(i);
+			//alert("fieldvalue:"+fieldvalue);
+		//}
+		var obj=uniscopeObj.Factory.GetObjectByGuid(id);
+		//alert("对象的名称为："+obj.name);
+		//高亮物体
+		//obj.Selectable=true;
+		//obj.SetBlendColor(uniscopeObj.ToIntColor(0xccaabb00));
+		var pRenderableObject=obj;//高亮对象
+		var lastTime=30;//高亮持续时间
+		var intervalTime=1;//闪烁间隔时间
+		var vColor=uniscopeObj.ToIntColor(0x7fff0000);//高亮色
+		uniscopeObj.Paint.HighlightObject(pRenderableObject,lastTime,intervalTime,vColor); 
+		};
+	uniscopeObj.ToolManager.SphericalObjectEditTool.PickObjectEx(127);//该方法内部自动调用搜索服务"POISearch"、"ModelSearch"
+
+/*	typedef enum tagUSPickObjectType
+	const int PickNone = 0
+	const int PickElement = 1
+	const int PickModel = 2
+	const int PickBlock = 4
+	const int PickMatchModel = 8
+	const int PickPoi = 16
+	const int PickVector = 32
+	const int PickAnnotation = 64
+	const int PickAllObject = 127*/
+	}
+/**
+ * 获取图层列表
+ */	
+/*function getLayerList(){
+	var layerCollection=uniscopeObj.GetStaticLayerCollection(0);//model layer
+	var layer=null;
+	var strArr=[];tempStr="",htmlStr="";
+	for (var i=0,iCount=layerCollection.Count;i<iCount;i++){
+		layer=layerCollection.Items(i);
+		tempStr='<li><input type="checkbox" onclick="toggleLayerVisible(\''+layer.Guid+'\')"/>'+layer.Name+"</li>";
+		strArr.push(tempStr);
+		}
+	htmlStr=strArr.join("");
+	document.getElementById("layerList").innerHTML=htmlStr;
+	}*/
+/**
+ * 获取所有图层列表
+ */	
+function getAllLayerList(){
+	getLayerList("DEM","DEMLayerList");
+	getLayerList("DOM","DOMLayerList");
+	getLayerList("Model","modelLayerList");
+	getLayerList("Block","blockLayerList");
+	getLayerList("MatchModel","matchModelLayerList");
+	getLayerList("Billboard","billboardLayerList");
+	getLayerList("POI","POILayerList");
+	getLayerList("Vector","vectorLayerList");
+	getLayerList("Annotation","annotationLayerList");
+	//其它图层....
+	}
+/**
+ * 切换图层的显示与隐藏
+ */
+function toggleLayerVisible(id){
+	var layer=uniscopeObj.GetStaticLayer(id);
+	if(!layer){
+		alert("图层不存在！");
+		return;
+		}
+	layer.Visible=!layer.Visible;
+	}
+</script>
+</head>
+<body onLoad="pageLoad();">
+<div id="earthContainer"> 
+  <!--引入Uniscope引擎-->
+  <object id="uniscope" width="100%" height="100%" data="data:application/x-oleobject;base64,Xy0TLBTXH0q8GKFyFzl3vgAIAADYEwAA2BMAAA==" classid="clsid:F697C54F-B019-4e02-A5AA-67643C9C5935"codeBase="" VIEWASTEXT="">
+    您没有安装或者没有在IE浏览器中启用Uniscope控件
+  </object>
+</div>
+<div id="toolbox">
+  <fieldset>
+    <legend>图层列表</legend>
+    <input type="button" value="获取所有图层列表" onClick="getAllLayerList();"/>
+	<input type="button" value="search_pipeline" onClick="pickObjectEx();"/>
+	<input type="button" value="结束_pipeline" onClick="Navigate();"/>
+    </br>
+    DEM图层列表：
+    <ul id="DEMLayerList">
+      <li>这里是列表内容</li>
+    </ul>
+    DOM图层列表：
+    <ul id="DOMLayerList">
+      <li>这里是列表内容</li>
+    </ul>
+    模型图层列表：
+    <ul id="modelLayerList">
+      <li>这里是列表内容</li>
+    </ul>
+    Block图层列表：
+    <ul id="blockLayerList">
+      <li>这里是列表内容</li>
+    </ul>
+    MatchModel图层列表：
+    <ul id="matchModelLayerList">
+      <li>这里是列表内容</li>
+    </ul>
+    Billboard图层列表：
+    <ul id="billboardLayerList">
+      <li>这里是列表内容</li>
+    </ul>
+    POI图层列表：
+    <ul id="POILayerList">
+      <li>这里是列表内容</li>
+    </ul>
+    矢量图层列表：
+    <ul id="vectorLayerList">
+      <li>这里是列表内容</li>
+    </ul>
+    Annotation图层列表：
+    <ul id="annotationLayerList">
+      <li>这里是列表内容</li>
+    </ul>
+  </fieldset>
+</div>
+</body>
+</html>

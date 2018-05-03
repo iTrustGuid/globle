@@ -1,0 +1,79 @@
+<div ng-controller="selectCtrl">
+    <h2>{{pItem.caption}}</h2>
+    <aside>示例使用了第三方下拉框插件，详细内容请查看官方文档：
+		<a href="https://github.com/angular-ui/ui-select" target="_blank">ui-select官方文档</a>
+	</aside>
+	<div id="select-dic">
+		<h3>数据字典下拉插件</h3>
+		<div class="description">
+			<h4>插件demo如下：</h4>
+			<form class="form-horizontal form-simple" name="userForm">
+				<gm-dic-select class="gm-select" type="性别" binddata="sex" disabled="dicDisable" gm-validator="validator1"></gm-dic-select>
+			</form>
+			<label for="">绑定值：</label><span ng-bind="sex"></span>
+			<label for="">表单验证：</label>
+			<select name="" id="" ng-model="validator1">
+				<option value="chinese">chinese</option>
+				<option value="required">require</option>
+			</select>
+			<button ng-click="dicDisable = !dicDisable" class="btn btn-primary">切换可用状态</button>
+			<button ng-click="validateForm()" class="btn btn-primary">表单验证</button>
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>Html代码</strong>
+				<code class="html">
+					&lt;gm-dic-select class=&quot;gm-select&quot; type=&quot;性别&quot; binddata=&quot;sex&quot; disabled=&quot;false&quot;&gt;&lt;/gm-dic-select&gt;
+				</code>
+			</pre>
+		</div>
+	</div>
+	<div id="select-dicspan">
+		<h3>数据字典值转换标签</h3>
+		<div class="description">
+			<h4>插件demo如下：</h4>
+			<label for="">性别：</label>
+			<gm-dic-span type="性别" binddata="sex"></gm-dic-span>
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>Html代码</strong>
+				<code class="html">
+					&lt;gm-dic-span type=&quot;性别&quot; binddata=&quot;sex&quot;&gt;&lt;/gm-dic-span&gt;
+				</code>
+			</pre>
+		</div>
+	</div>
+	<div id="select-query">
+		<h3>查询下拉框</h3>
+		<div class="description">
+			<h4>插件demo如下：</h4>
+			<label for="">性别：</label>
+			<gm-query-select binddata="sex1" data="selectData" config = "config" gm-validator="phone"></gm-query-select>
+			<label for="">对应值：</label>
+			<span>{{sex1}}</span>
+			<button class="btn btn-primary" ng-click="sex1 = 1">设置为女</button>
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>JS代码</strong>
+				<code class="js">
+				$scope.sex1 = "0";
+				$scope.selectData = [{
+					name:"男",
+					value:"0"
+				},{
+					name:"女",
+					value:"1"
+				}];
+				$scope.config = {
+					attName:"name",
+					strAttValue:"value",
+					pinyin:true
+				};
+				</code>
+				<strong>Html代码</strong>
+				<code class="html">
+					&lt;gm-query-select binddata=&quot;sex1&quot; data=&quot;selectData&quot; config = &quot;config&quot; gm-validator=&quot;phone&quot;&gt;
+				</code>
+			</pre>
+		</div>
+	</div>
+</div>

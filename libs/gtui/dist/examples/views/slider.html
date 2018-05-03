@@ -1,0 +1,26 @@
+<div ng-controller="sliderCtrl">
+ 	<h2>{{pItem.caption}}</h2>
+	<aside>示例使用了第三方下拉框插件，详细内容请查看官方文档：
+		<a href="https://github.com/angular-ui/ui-slider" target="_blank">ui-slider官方文档</a>
+	</aside>
+	<div>
+		<h3>滑块插件</h3>
+		<div class="description">
+			<h4>插件demo如下：</h4>
+		 	<div ui-slider min="0" max="50" ng-model="sliderValue"></div>
+			<div style="margin-top: 10px">
+				<label for="">绑定值：</label>
+				<span ng-bind="sliderValue"></span>
+			</div>
+
+			<h4>插件代码如下：</h4>
+			<pre>
+				<strong>Html代码</strong>
+				<code class="html">
+				&lt;div ui-slider min=&quot;0&quot; max=&quot;50&quot; ng-model=&quot;sliderValue&quot;&gt;&lt;/div&gt;
+				&lt;label for=&quot;&quot;&gt;绑定值：&lt;/label&gt;&lt;span ng-bind=&quot;sliderValue&quot;&gt;&lt;/span&gt;
+				</code>
+			</pre>
+		</div>
+	</div>
+</div>

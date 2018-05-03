@@ -1,0 +1,27 @@
+<div ng-controller="protocolCtrl" style="height: 100%">
+	<div class="title">
+		<h4>发起流程</h4>
+	</div>
+	<div class="process-type">
+		<h4>业务分类</h4>
+		<ul class="clearfix">
+			<li ng-repeat="item in draftData" ng-class="{'active':$index === 0}">
+				<div class="icon-box"><i class="iconfont icon-gangbi"></i></div>
+				<span data-target="#tab2Content{{$index}}" data-toggle="tab" ng-bind="item.categoryName"></span>
+			</li>
+		</ul>
+	</div>
+	<div class="tab-content process-subtype">
+		<article class="tab-pane fade" ng-repeat="item in draftData" id="tab2Content{{$index}}" ng-class="{'active in':$index === 0}">
+			<ul class="tab2-list">
+				<li ng-repeat="subItem in item.processDefs">
+					<p class="text-muted">业务名称</p>
+					<h3 ng-bind="subItem.processName" class="text-ellipsis" title="{{subItem.processName}}"></h3>
+					<button class="btn btn-primary btn-sm" type="button" ng-click="draftProcess(subItem);">发起</button>
+				</li>
+			</ul>
+		</article>
+	</div>
+
+	<button id="protocol_button" class="hidden" ng-click="goPending()"></button>
+</div>

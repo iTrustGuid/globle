@@ -1,0 +1,115 @@
+@headerHeight: 80px;
+
+body {
+    display: flex;
+    flex-direction: column;
+    &>header {
+        height: @headerHeight;
+        background: url(./img/head-bg.png);
+        background-size: 100% 82px;
+        color: white;
+        display: flex;
+        justify-content: baseline;
+        font-size: 16px;
+        &>.sysinfo span {
+            color: white;
+            font: 24px "微软雅黑";
+            text-shadow: 0 2px 5px #000;
+            margin: 0 0 5px 0;
+            line-height: @headerHeight;
+            display: inline-block;
+            vertical-align: top;
+            &:nth-of-type(1) {
+                background: url('img/logo.png');
+                background-size: @headerHeight;
+                height: @headerHeight;
+                width: @headerHeight;
+            }
+        }
+        &>nav {
+            flex: 1;
+            margin: 0 50px;
+            a {
+                padding: 0 10px;
+                line-height: @headerHeight;
+                color: white;
+                &:active,
+                &:hover,
+                &:focus,
+                &:visited,
+                &.active {
+                    text-decoration: none;
+                    font-weight: bolder;
+                    color: #145ccd;
+                }
+            }
+        }
+        &>.log-info {
+            line-height: @headerHeight;
+            width: 200px;
+            font-size: 14px;
+            span {
+                padding: 5px;
+            }
+            span::after {
+                content: '';
+                border-left: solid 1px white;
+                margin-left: 10px;
+            }
+            a {
+                vertical-align: top;
+                color: white;
+                &:active,
+                &:hover,
+                &:focus,
+                &:visited {
+                    text-decoration: none;
+                    font-weight: bolder;
+                }
+            }
+        }
+    }
+    &>.content {
+        flex: 1;
+        display: flex;
+        .map {
+            flex: 1;
+            background: white;
+        }
+        .tool-panel {
+            width: 300px;
+            &>.title {
+                background: #6f6fff;
+                h3 {
+                    margin: 0;
+                    color: white;
+                    padding: 5px;
+                }
+            }
+            &>.layer-tool {
+                height: 31px;
+                background: #ebeaea;
+                font-size: 10px;
+                display: flex;
+                button{
+                    min-width: 20px;
+                }
+            }
+            .gm-tree-div {
+                height: calc(~"100% - 56px");
+                overflow: auto;
+            }
+        }
+        .tool-panel.ztgw{
+            table{
+                background: white;
+                td{
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    &>footer {
+        height: 0;
+    }
+}

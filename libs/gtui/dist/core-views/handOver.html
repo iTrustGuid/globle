@@ -1,0 +1,44 @@
+<div class="maxHeight" ng-controller="handOverCtrl">
+	<header class="dialog-header">
+		<h4 class="modal-title">移交</h4>
+	</header>
+	<div class="dialog-content tab-content">
+		<form class="form-horizontal form-simple" name="folderForm">
+			<table class="table table-fixed">
+				<tr>
+					<td colspan="2" class="td-label"><label>案卷编号</label></td>
+					<td colspan="4" class="td-value"><input type="text" ng-model="taskInfo.bizKey" readonly></td>
+					<td colspan="2" class="td-label"><label>提交时间</label></td>
+					<td colspan="4" class="td-value"><input type="text" ng-value="taskInfo.startTime | date:'yyyy-MM-dd'" readonly></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="td-label"><label>案卷标题</label></td>
+					<td colspan="10" class="td-value"><input type="text" ng-model="taskInfo.bizName" readonly></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="td-label"><label>流程名称</label></td>
+					<td colspan="4" class="td-value"><input type="text" ng-model="taskInfo.processName" readonly></td>
+					<td colspan="2" class="td-label"><label>当前节点</label></td>
+					<td colspan="4" class="td-value"><input type="text" ng-model="taskInfo.taskKey" readonly></td>
+				</tr>
+			</table>
+		</form>
+		<div ng-if="isOnlyLastNode === false" class="col-xs-6 panel-footer chooseRoleLeft">
+			<gm-tree treedata="chooseRole" data-check=true data-collapsed="false" data-icon=true data-check-rel="true" config="handOverConfig"></gm-tree>
+		</div>
+		<div ng-if="isOnlyLastNode === false" class="col-xs-6 panel-footer chooseRoleRight">
+			<div class="choosenTop">
+				<div ng-repeat="user in selectedUsers">
+					<h4>{{user.node}}</h4>
+					<span ng-repeat="item in user.users">{{item.name}}<i class="icon icon-times" ng-click="unselectUser(user.node,item.id,item.name)"></i></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dialog-buttons">
+		<button class="btn btn-success" ng-click="modelHandOver()" ng-if="isOnlyLastNode === false"><i class="icon-arrow-right"></i> 移交</button>
+		<button class="btn btn-success" ng-click="modelHandOver(true)" ng-if="isOnlyLastNode === true"><i class="icon-stop"></i> 结束流程</button>
+		<button class="btn btn-warning"><i class="icon-arrow-left"></i> 回退</button>
+		<button class="btn"><i class="icon-lock"></i> 挂起</button>
+	</div>
+</div>
