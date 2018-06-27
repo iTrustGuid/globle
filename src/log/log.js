@@ -4,8 +4,8 @@ import './log-service';
 window.loginInfo = {
     bjUrl: require('./img/bj.png'), //背景图片路径
     logo: require('../img/logo.png'), //logo图标
-    cname: 'XXX地下管网系统',
-    footer: 'Copyright&nbsp;&copy;&nbsp;2017-2020&nbsp;XXX地下管网系统&nbsp;-&nbsp;Powered&nbsp;By&nbsp;GreatMap&nbsp;V2.0'
+    cname: '河津市地下管网系统',
+    footer: 'Copyright&nbsp;&copy;&nbsp;2017-2020&nbsp;河津市地下管网系统&nbsp;-&nbsp;Powered&nbsp;By&nbsp;&nbsp;V2.0'
 };
 
 app.controller('loginCtrl', ['$scope', '$logService', function ($scope, $logService) {
@@ -22,16 +22,16 @@ app.controller('loginCtrl', ['$scope', '$logService', function ($scope, $logServ
         //验证表单
         var loginData = $scope.loginData || {};
         if (GM.CommonOper.isStrNullOrEmpty(loginData.username)) {
-            GM.Alert.show('提示', '请输入用户名！');
+            GM.Infomation.show('提示', '请输入用户名！');
             return;
         }
         if (GM.CommonOper.isStrNullOrEmpty(loginData.password)) {
-            GM.Alert.show('提示', '请输入密码！');
+            GM.Infomation.show('提示', '请输入密码！');
             return;
         }
         let logRt = $logService.login(loginData.username, loginData.password);
         if (logRt.success === false) {
-            GM.Alert.show('提示', logRt.message);
+            GM.Infomation.show('提示', logRt.message);
         } else {
             $logService.goMainPage();
         }

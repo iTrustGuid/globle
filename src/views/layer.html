@@ -1,0 +1,14 @@
+<div class="tool-panel" ng-show="activeItem.name === 'tcgl'" ng-controller="layerCtrl">
+    <header class="title">
+        <h3>{{activeItem.caption}}</h3>
+    </header>
+    <div class="layer-tool">
+        <button class="btn btn-link" type="button" title="取消选择" ng-click="cancleTool()"><i class="icon icon-trash"></i>取消选择</button>
+        <button class="btn btn-link" type="button" title="复位" ng-click="zoomTo()"><i class="icon icon-globe"></i>复位</button>
+<!--         <button class="btn btn-link" type="button" title="跳转" ng-click="zoomTo()"><i class="icon icon-globe"></i>跳转</button>
+        <button class="btn btn-link" type="button" title="飞行" ng-click="zoomTo()"><i class="icon icon-globe"></i>飞行</button> -->
+    </div>
+    <div class="tool-content">
+        <gm-tree treedata="treeData" data-check=true data-icon=true config="config" showquery=false></gm-tree>
+    </div>
+</div>

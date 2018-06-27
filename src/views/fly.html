@@ -1,0 +1,59 @@
+<div class="tool-panel" ng-show="activeItem.name === 'fly'" ng-controller="flyCtrl">
+    <header class="title">
+        <h3>{{activeItem.caption}}</h3>
+    </header>
+    <div class="layer-tool">
+        <button class="btn btn-link" type="button" title="新建" ng-click="add()"><i class="icon icon-plus-sign"></i>新建</button>
+        <button class="btn btn-link" type="button" title="编辑" ng-click="edit()"><i class="icon icon-edit"></i>编辑</button>
+    </div>
+    <div class="tool-content">
+        <div class="panel fly-control">
+            <div class="panel-heading">
+                飞行控制
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-primary" ng-click="star()">开始</button>
+                <button type="button" class="btn btn-primary" ng-click="pause()">暂停</button>
+                <button type="button" class="btn btn-primary" ng-click="continue()">继续</button>
+                <button type="button" class="btn btn-primary" ng-click="stop()">停止</button>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                飞行模式
+            </div>
+            <div class="panel-body">
+                <label>
+                    <input type="radio" name="flyModel" value="0" ng-model="flyModel"> 跟随模式
+                </label>
+                <label>
+                    <input type="radio" name="flyModel" value="1" ng-model="flyModel"> 运动物体
+                </label>
+                <label>
+                    <input type="checkbox" ng-model="isViewPath"> 显示轨迹
+                </label>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                观察模式
+            </div>
+            <div class="panel-body">
+                <div>
+                    <button type="button" class="btn btn-primary" ng-click="chooseModel()">选择模型</button>
+                </div>
+                <div style="margin-top: 5px;">
+                    <label>
+                        <input type="radio" name="viewModel" value="0" ng-model="viewModel"> 第一人称
+                    </label>
+                    <label>
+                        <input type="radio" name="viewModel" value="1" ng-model="viewModel"> 第三人称
+                    </label>
+                    <label>
+                        <input type="radio" name="viewModel" value="2" ng-model="viewModel"> 自由模式
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

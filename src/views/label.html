@@ -1,0 +1,40 @@
+<div class="tool-panel" ng-show="activeItem.name === 'bqgl'" ng-controller="labelCtrl">
+    <header class="title">
+        <h3>{{activeItem.caption}}</h3>
+    </header>
+    <div class="layer-tool" ng-show="isAddType !== true">
+        <button class="btn btn-link" type="button" title="新增" ng-click="add()"><i class="icon icon-plus-sign"></i>新增</button>
+        <button class="btn btn-link" type="button" title="删除" ng-click="remove()"><i class="icon icon-remove-sign"></i>删除</button>
+    </div>
+    <div class="tool-content" ng-show="isAddType !== true">
+    </div>
+    <div class="layer-tool" ng-show="isAddType === true">
+        <button class="btn btn-link" type="button" title="返回" ng-click="back()" style="position:absolute;right: 0;"><i class="icon icon-reply"></i>返回</button>
+    </div>
+    <div class="tool-content" ng-show="isAddType === true">
+        <div class="panel">
+            <div class="panel-heading">
+                二维对象
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li ng-repeat="item in label2Data" class="list-group-item">
+                        <a href="javascript:void(0);">{{item.caption}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                三维对象
+            </div>
+            <div class="panel-body">
+               <ul class="list-group">
+                    <li ng-repeat="item in label3Data" class="list-group-item">
+                        <a href="javascript:void(0);">{{item.caption}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

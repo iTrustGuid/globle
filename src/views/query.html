@@ -1,0 +1,40 @@
+<div class="tool-panel ztgw" ng-show="activeItem.name === 'ztgw'" ng-controller="queryCtrl">
+    <header class="title">
+        <h3>{{activeItem.caption}}</h3>
+    </header>
+    <div class="layer-tool">
+        <!--         <button class="btn btn-link" type="button" title="统计" ng-click="statistics()"><i class="icon icon-search"></i>统计</button>
+ -->
+        <button class="btn btn-link" type="button" title="点选" ng-click="selectByTool()"><i class="icon icon-search"></i>点选</button>
+    </div>
+    <div class="tool-content">
+        <table class="table table-bordered">
+            <thead>
+                <th>图层</th>
+                <th>管径</th>
+                <th>数量</th>
+                <th>长度</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3">
+                        dl_ln
+                    </td>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>50</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,1 +1,0 @@
-document.write('<script type="text/javascript" src="' + STATIC_RESOURCES_PATH + 'dist/form-7ea2d.bundle.js?239ecf83f29a7f0394e905aeb64c8a6c"></script>');

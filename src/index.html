@@ -3,20 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>XXX地下管网系统</title>
-    <script type="text/javascript">
-    var STATIC_RESOURCES_PATH = './libs/gtui/'
-    </script>
-    <script type="text/javascript" src="./libs/gtui/dist/loader-frame2.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+    <title>河津市地下管网系统</title>
     <script type="text/javascript" src="./config.js"></script>
+    <script type="text/javascript" src="./libs/gtui/dist/loader-frame2.js"></script>
 </head>
 
 <body ng-controller="mainCtrl">
     <header>
         <div class="sysinfo">
             <span></span>
-            <span>XXX地下管网系统</span>
+            <span>河津市地下管网系统</span>
         </div>
         <nav class="menu">
             <a href="javascript:void(0);" ng-class="{'active':activeItem === item}" ng-repeat="item in menuList" ng-bind="item.caption" ng-click="chooseMenu(item)"></a>
@@ -33,57 +30,7 @@
                 您没有安装或者没有在IE浏览器中启用Uniscope控件
             </object>
         </div>
-        <div class="tool-panel" ng-show="activeItem.name !== 'ztgw'">
-            <header class="title">
-                <h3>图层列表</h3>
-            </header>
-            <div class="layer-tool">
-                <button class="btn btn-link" type="button" title="点选" ng-click="selectByTool()"><i class="icon icon-search"></i>点选</button>
-                <button class="btn btn-link" type="button" title="取消选择" ng-click="cancleTool()"><i class="icon icon-trash"></i>取消选择</button>
-                <button class="btn btn-link" type="button" title="复位" ng-click="zoomTo()"><i class="icon icon-globe"></i>复位</button>
-                <button class="btn btn-link" type="button" title="跳转" ng-click="zoomTo()"><i class="icon icon-globe"></i>跳转</button>
-                <button class="btn btn-link" type="button" title="飞行" ng-click="zoomTo()"><i class="icon icon-globe"></i>飞行</button>
-            </div>
-            <gm-tree treedata="treeData" data-check=t rue data-icon=t rue config="config" showquery=false></gm-tree>
-        </div>
-        <div class="tool-panel ztgw" ng-show="activeItem.name === 'ztgw'">
-            <header class="title">
-                <h3>专题管网</h3>
-            </header>
-            <div class="layer-tool">
-                <button class="btn btn-link" type="button" title="统计" ng-click="statistics()"><i class="icon icon-search"></i>统计</button>
-            </div>
-            <div>
-                <table class="table table-bordered">
-                    <thead>
-                        <th>图层</th>
-                        <th>管径</th>
-                        <th>数量</th>
-                        <th>长度</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="3">
-                                dl_ln
-                            </td>
-                            <td>50</td>
-                            <td>50</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <td>50</td>
-                            <td>50</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <td>50</td>
-                            <td>50</td>
-                            <td>50</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <div ng-repeat="item in menuList" ng-include="item.url" style="height: 100%;"></div>
     </div>
     <footer></footer>
 </body>

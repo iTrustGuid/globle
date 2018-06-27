@@ -236,13 +236,14 @@ angular.module('mainApp').factory('$mainService', ['$timeout', function ($timeou
          * @return {String} mdb地址
          */
         _getMdbPath: function () {
-            var syspath = location.href; //file:///c:/Documents%20and%20Settings/Administrator/桌面/新建文件夹/handle-mdb.html
-            myPosition = syspath.lastIndexOf('/');
-            syspath = syspath.substring(0, parseInt(myPosition) + 1);
-            syspath = syspath.replace('file:///', '');
-            syspath = syspath.replace(new RegExp('%20', 'gm'), ' ');
-            syspath = syspath + fileName; //c:/documents and settings/administrator/桌面/新建文件夹/Database.mdb；
-            return syspath.toString();
+            return MDB_PATH;
+            // var syspath = location.href; //file:///c:/Documents%20and%20Settings/Administrator/桌面/新建文件夹/handle-mdb.html
+            // myPosition = syspath.lastIndexOf('/');
+            // syspath = syspath.substring(0, parseInt(myPosition) + 1);
+            // syspath = syspath.replace('file:///', '');
+            // syspath = syspath.replace(new RegExp('%20', 'gm'), ' ');
+            // syspath = syspath + fileName; //c:/documents and settings/administrator/桌面/新建文件夹/Database.mdb；
+            // return syspath.toString();
         },
         /**
          * 通过图层类型获取图层

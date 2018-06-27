@@ -1,0 +1,16 @@
+<div class="tool-panel" ng-show="activeItem.name === 'measure'" ng-controller="calculateCtrl">
+    <header class="title">
+        <h3>{{activeItem.caption}}</h3>
+    </header>
+    <div class="layer-tool" style="display:none">
+    </div>
+    <div class="tool-content">
+        <button type="button" class="btn btn-primary" ng-click="spjl()">水平距离</button>
+        <button type="button" class="btn btn-primary" ng-click="czjl()">垂直距离</button>
+        <button type="button" class="btn btn-primary" ng-click="kjjl()">空间距离</button>
+        <button type="button" class="btn btn-primary" ng-click="dbjl()">地表距离</button>
+        <button type="button" class="btn btn-primary" ng-click="dbmj()">地表面积</button>
+        <button type="button" class="btn btn-primary" ng-click="tymj()">投影面积</button>
+        <button type="button" class="btn btn-primary" ng-click="qc()">清除</button>
+    </div>
+</div>

@@ -32,7 +32,7 @@ body {
             a {
                 padding: 0 10px;
                 line-height: @headerHeight;
-                color: white;
+                color: white !important;
                 &:active,
                 &:hover,
                 &:focus,
@@ -41,6 +41,9 @@ body {
                     text-decoration: none;
                     font-weight: bolder;
                     color: #145ccd;
+                }
+                &.active {
+                    color: #145ccd !important;
                 }
             }
         }
@@ -77,6 +80,9 @@ body {
             background: white;
         }
         .tool-panel {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             width: 300px;
             &>.title {
                 background: #6f6fff;
@@ -91,19 +97,24 @@ body {
                 background: #ebeaea;
                 font-size: 10px;
                 display: flex;
-                button{
+                button {
                     min-width: 20px;
                 }
+            }
+            &>.tool-content {
+                flex: 1;
+                overflow: auto;
+                overflow-x: hidden;
             }
             .gm-tree-div {
                 height: calc(~"100% - 56px");
                 overflow: auto;
             }
         }
-        .tool-panel.ztgw{
-            table{
+        .tool-panel.ztgw {
+            table {
                 background: white;
-                td{
+                td {
                     vertical-align: middle;
                 }
             }
@@ -111,5 +122,58 @@ body {
     }
     &>footer {
         height: 0;
+    }
+}
+
+.tool-panel[ng-controller] {
+    height: 100%;
+}
+
+[ng-controller="flyCtrl"] {
+    .panel {
+        margin-bottom: 0;
+    }
+    .fly-control {
+        button {
+            min-width: 60px;
+        }
+    }
+}
+
+[ng-controller="calculateCtrl"] {
+    .tool-content {
+        padding: 10px;
+        button {
+            margin: 5px;
+            width: 80px;
+            min-width: auto;
+        }
+    }
+}
+
+[ng-controller="labelCtrl"]{
+    .list-group .list-group-item{
+        cursor: pointer;
+        &:hover{
+            background: #6f6fff;
+            a{
+                color: white;
+            }
+        }
+    }
+}
+
+[ng-controller="spatialCtrl"] {
+
+}
+
+[ng-controller="arCtrl"] {
+    .tool-content {
+        padding: 10px;
+        button {
+            margin: 5px;
+            width: 80px;
+            min-width: auto;
+        }
     }
 }
